@@ -1,0 +1,13 @@
+<div class="content">
+  <ul class="nav">
+     <%= link_to "新建项目", new_team_project_url(@current_team) %>
+  </ul>
+
+  <div class="list-group">
+    <% @projects.each do |project| %>
+      <%= link_to project.name, team_project_url(@current_team, project), class: 'list-group-item' %>
+    <% end %>
+  </div>
+
+</div>
+

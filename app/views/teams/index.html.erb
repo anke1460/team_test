@@ -1,0 +1,8 @@
+<div class="list-group">
+  <% @teams.each do |team| %>
+    <%= link_to team.name, team, class: 'list-group-item' %>
+  <% end %>
+  <%= link_to '新建', new_team_path, class: 'list-group-item' %>
+</div>
+
+

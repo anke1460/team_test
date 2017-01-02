@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+  <h5>当前团队</h5>
+  <p><%= link_to @team.name, team_path(@team) %></p>
+ 
+  <h5>项目</h5>
+
+  <% @projects.each do |project| %>
+    <%= link_to project.name,  team_project_url(@team) %>
+  <% end %>
+  <%= link_to "新建项目", new_team_project_url(@team) %>
+  <%= link_to '编辑', edit_team_path(@team) %> |
+  <%= link_to '返回', teams_path %>

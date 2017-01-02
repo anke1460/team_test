@@ -1,0 +1,7 @@
+<% if @events.present? %>
+  $("#event").append('<%= j(render "index") %>');
+  canScroll = true;
+<% else %>
+  $("#bottom_text").show().html("没有更多数据");
+  canScroll = false;
+<% end %>

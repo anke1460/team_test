@@ -1,0 +1,19 @@
+<div class="content">
+  <h2 class="page-header">任务：<%= @todo.name %><h2>
+  <% @todo.comments.each do |c| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading"><%= c.user.name %> <%= c.created_at.strftime("%H:%M")%></h4>
+        <p><%= c.content %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form_for(@comment, url: project_todo_comments_url(@project, @todo)) do |f| %>
+
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control', placeholder: '发表评论'%>
+  </div>
+  <button type="submit" class="btn btn-default">保存</button>
+<% end %>
+</div>

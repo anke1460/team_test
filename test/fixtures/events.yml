@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: one
+  sender_type: Sender
+  owner: one
+  owner_type: Owner
+  key: MyString
+  parameters: MyText
+  receiver: one
+  receiver_type: Receiver
+
+two:
+  sender: two
+  sender_type: Sender
+  owner: two
+  owner_type: Owner
+  key: MyString
+  parameters: MyText
+  receiver: two
+  receiver_type: Receiver

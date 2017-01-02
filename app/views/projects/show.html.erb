@@ -1,0 +1,33 @@
+<div class="content">
+  <h2 class="page-header"><%= @project.name %><h2>
+  <ul class="nav">
+     <%= link_to "新建任务", new_project_todo_url(@project) %>
+  </ul>
+  <h2 class="page-header">任务清单<h2>
+  <% @project.todos.works.each do |todo| %>
+    <%= form_for [@project, todo], method: :patch do |f| %>
+      <div class="row">
+        <div class="col-xs-2">
+          <label>
+          <%= f.check_box :state%>
+            <%= link_to todo.name, project_todo_url(@project, todo) %>
+          </label>
+        </div>
+        <div class="col-xs-2">
+          <span>指派给：</span>
+        </div>
+        <div class="col-xs-2">
+          <%= select_tag "todo[user_id]", options_from_collection_for_select(@project.members, "id", "name", todo.user.try(:id)), include_blank: true %>
+        </div>
+        <div class="col-xs-4">
+          <%= f.date_field :finish_at %>
+        </div>
+        <div class="col-xs-2">
+          <%= link_to '删除', project_todo_path(@project, todo), method: :delete, data: { confirm: '确认删除?' } %>
+          <%= f.submit '保存', class: 'btn btn-default' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

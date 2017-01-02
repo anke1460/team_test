@@ -1,0 +1,26 @@
+<div id="event">
+  <%= render "index" %>
+</div>
+
+<p id="bottom_text" style="display:none"></p>
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    var canScroll = true;
+    $(function(){ 
+      var team_id = <%= params[:team_id] %>;
+      var winH = $(window).height();
+      $(window).scroll(function() { 
+          var pageH = $(document.body).height(); 
+          var scrollT = $(window).scrollTop(); 
+          var outH = (pageH - winH - scrollT) / winH; 
+
+          if(outH < 0.02 && canScroll){ 
+            canScroll = false;
+            $.getScript("/teams/" + team_id + "/events?_id=" + $(".event-list:last").data().id); 
+          } 
+          return canScroll;
+      }); 
+    }); 
+  </script>
+<% end %>
